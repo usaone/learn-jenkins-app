@@ -13,10 +13,10 @@ pipeline {
             steps {
                 sh '''
                     ls -la
+                    sudo chown -R 105:108 "/.npm"
                     node --version
                     npm --version
                     npm ci
-                    sudo chown -R 105:108 "/.npm"
                     npm run build
                     ls -la
                 '''
