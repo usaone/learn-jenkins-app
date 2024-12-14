@@ -13,9 +13,14 @@ pipeline {
             steps {
                 sh '''
                     ls -la
+                    mkdir -p .npm_cache
+                    npm config set cache .npm_cache
+                    npm config set prefix .npm_cache
+                    npm config set global true
+                    export PATH=$PATH:./.npm_global/bin
                     node --version
                     npm --version
-                    npm install
+                    npm ci
                     npm run build
                     ls -la
                 '''
