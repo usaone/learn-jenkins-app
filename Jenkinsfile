@@ -6,7 +6,6 @@ pipeline {
             agent {
                 docker {
                     image 'node:18-alpine'
-                    args '-u node'
                     reuseNode true
                 }
             }
@@ -14,16 +13,9 @@ pipeline {
             steps {
                 sh '''
                     ls -la
-                    # mkdir -p .npm_cache
-                    # npm config set cache .npm_cache
-                    # npm config set prefix .npm_cache
-                    # npm config set global true
-                    # export PATH=$PATH:./.npm_global/bin
                     node --version
                     npm --version
-                '''
-                sh '''
-                    npm install --no-cache
+                    npm ci
                     npm run build
                     ls -la
                 '''
