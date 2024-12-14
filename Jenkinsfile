@@ -12,6 +12,7 @@ pipeline {
             }
 
             steps {
+                cleanWs()
                 sh '''
                     ls -la
                     mkdir -p .npm_cache
