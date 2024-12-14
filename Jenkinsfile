@@ -21,7 +21,9 @@ pipeline {
                     export PATH=$PATH:./.npm_global/bin
                     node --version
                     npm --version
-                    npm install
+                '''
+                sh '''
+                    npm install --no-bin-links
                     npm run build
                     ls -la
                 '''
