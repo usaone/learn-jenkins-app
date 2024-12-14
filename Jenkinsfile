@@ -14,16 +14,16 @@ pipeline {
             steps {
                 sh '''
                     ls -la
-                    mkdir -p .npm_cache
-                    npm config set cache .npm_cache
-                    npm config set prefix .npm_cache
-                    npm config set global true
-                    export PATH=$PATH:./.npm_global/bin
+                    # mkdir -p .npm_cache
+                    # npm config set cache .npm_cache
+                    # npm config set prefix .npm_cache
+                    # npm config set global true
+                    # export PATH=$PATH:./.npm_global/bin
                     node --version
                     npm --version
                 '''
                 sh '''
-                    npm install --no-bin-links
+                    npm install --no-cache
                     npm run build
                     ls -la
                 '''
